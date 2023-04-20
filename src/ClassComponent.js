@@ -5,21 +5,39 @@ export default class ClassComponent extends Component {
     super(props)
   
     this.state = {
-      name: "Alex"
+      count: 0,
+      name: "<○--♥--○>"
     }
-
-    this.handleClick = this.handleClick.bind(this);
+    
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.reset = this.reset.bind(this);
+    
   }
-  handleClick() {
+  increment() {
     this.setState({
-      name: "Hiiiiiiiiiiiiiiiiiiiiiii"
+      count: this.state.count +1
+    })
+  }
+  decrement() {
+    this.setState({
+      count: this.state.count -1
+    })
+  }
+  reset() {
+    this.setState({
+      count: 0
     })
   }
   render() {
         return (
       <div>ClassComponent
-        <h2>{this.state.name}</h2>
-        <button onClick={this.handleClick}>Click</button>
+        <h5>{'<=-'}{this.props.numbers.join("||")}{"-=>"}</h5>
+        <h3>{this.state.name}</h3>
+        <h2>{this.state.count}</h2>
+        <button onClick={this.increment}>++</button>
+        <button onClick={this.decrement}>--</button>
+        <button onClick={this.reset}>reset </button>
       </div>
     )
   }
